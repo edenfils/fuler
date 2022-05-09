@@ -1,0 +1,133 @@
+/* large desktop :1366px. */
+@media (min-width: 1200px) and (max-width: 1400px) {
+  
+  
+  
+
+}
+
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1200px) {
+
+  .main-menu ul li {
+    padding-left: 35px;
+}
+  .recent-post-img {
+  margin-right: 0;
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+}
+
+
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) { 
+  
+  .header-cart {
+  padding: 0 0px 0px;
+  margin-right: 0;
+  margin-left: 50px;
+}
+ .mean-container a.meanmenu-reveal {
+  left: 0;
+  right: auto;
+}
+  
+  .account-curr-lang-wrap ul li ul {
+  left: 0;
+  right: auto;
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+}
+
+
+/* small mobile :320px. */
+@media (max-width: 767px) { 
+ 
+    .header-cart {
+  padding: 0 0px 0px;
+  margin-right: 0;
+  margin-left: 40px;
+}
+ .mean-container a.meanmenu-reveal {
+  left: 0;
+  right: auto;
+}
+.cart-text {
+    width: 56px;
+    margin-right: 0px;
+}
+  
+.welcome-area {
+  float: none;
+}  
+ .section-border {
+  margin-left: 0;
+}
+  .copyright {
+  float: none;
+}
+  
+ .product-tab-list {
+    width: 100%;
+} 
+  
+.shopping-cart-content {
+  right: -155px;
+}
+  .product-sorting-wrapper {
+  text-align: right;
+}
+  .shorting-style {
+  margin-right: 0;
+}
+  .pro-dec-social li {
+  margin: 0 0 10px 3px;
+}
+ .blog-social ul li {
+  margin-right: 0px;
+} 
+  
+.blog-social > span {
+  margin: -1px 0 0 10px;
+}  
+  .button-box button {
+  float: right;
+}
+  
+  
+  
+  
+  
+  
+  
+  
+}
+
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+  
+  
+  
+
+}
