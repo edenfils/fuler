@@ -1,0 +1,15 @@
+<li class="top-hover"><a href="#">{{ section.settings.top_menu_title }} <i class="ion-chevron-down"></i></a>
+    <ul>
+        {% if shop.customer_accounts_enabled and customer %}
+        <li><a href="{{ routes.account_logout_url }}">Logout</a></li>
+        {% else %}
+
+        <li><a href="{{ routes.account_login_url }}">Login</a></li>
+        {% endif %}
+
+        {% assign header_top_menu_handle = section.settings.header_top_menu %}
+        {% for link in linklists[header_top_menu_handle].links %}
+        <li><a href="{{ link.url }}">{{link.title }}</a></li>
+        {% endfor %}
+    </ul>
+</li>

@@ -1,0 +1,35 @@
+
+<li class="top-hover header-search same-style">
+    <button class="search-toggle">
+      <i class="ion-search s-open"></i>
+      <i class="ion-close s-close"></i>
+    </button>
+    <div class="search-content">
+      <form action="{{ routes.search_url }}" method="get" role="search">
+        <input id="search" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" class="input-group-field input-text" aria-label="{{ 'general.search.placeholder' | t }}">
+        <button type="submit">
+          <i class="ion-search"></i>
+        </button>
+      </form>
+    </div>
+  </li>
+  
+  <script>
+    
+        /*--
+      Header Search Toggle
+      -----------------------------------*/
+      var searchToggle = $('.search-toggle');
+      searchToggle.on('click', function(){
+          if($(this).hasClass('open')){
+             $(this).removeClass('open');
+             $(this).siblings('.search-content').removeClass('open');
+          }else{
+             $(this).addClass('open');
+             $(this).siblings('.search-content').addClass('open');
+          }
+      })
+      
+    
+    
+  </script>

@@ -1,0 +1,101 @@
+
+{% if section.settings.header_top_enable %}
+<div class="header-top">
+    <div class="container">
+        <div class="border-bottom-1">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="welcome-area">
+                        {% if shop.customer_accounts_enabled and customer %}
+                        <p>{{ settings.wellcome_customer }} <a href="{{ routes.account_url }}">{{ customer.name }}</a></p>
+                        {% else %}
+                        <p>{{ settings.wellcome_content }}</p>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-12">
+                    <div class="account-curr-lang-wrap f-right">
+                        <ul>
+                            {% render 'header-search' %}
+                            {% render 'header-top-menu' %}
+                            {% render 'currency-picker' %}        
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %} 
+
+<style>
+    #section-{{ section.id }} .header-top .border-bottom-1 {
+    border-bottom: 1px solid {{ section.settings.border_bottom_color }};
+}
+  
+      #section-{{ section.id }} .header-top {
+    background: {{ section.settings.top_bg_color }};
+  }
+
+  #section-{{ section.id }} .header-top {
+    padding-top:{{ section.settings.section_padding_top_1 }}px;
+  }
+
+  #section-{{ section.id }} .header-top {
+    padding-bottom:{{ section.settings.section_padding_bottom_1 }}px;
+  }
+
+
+  @media (min-width: 768px) and (max-width: 991px){
+
+   #section-{{ section.id }}  .header-top {
+      padding-top:{{ section.settings.section_padding_top_md_1 }}px;
+    }
+
+    #section-{{ section.id }} .header-top {
+      padding-bottom:{{ section.settings.section_padding_bottom_md_1 }}px;
+    }
+
+  }
+  @media (max-width: 767px) {
+
+    #section-{{ section.id }} .header-top {
+      padding-top:{{ section.settings.section_padding_top_xs_1 }}px;
+    }
+
+    #section-{{ section.id }} .header-top {
+      padding-bottom:{{ section.settings.section_padding_bottom_xs_1 }}px;
+    }
+  }
+
+  
+  
+  
+
+#section-{{ section.id }} .welcome-area > p {
+    color: {{ section.settings.wellcome_text_color }};
+}
+  
+    
+  #section-{{ section.id }} .same-style button i {
+    color: {{ section.settings.search_icon_color }};
+}
+
+#section-{{ section.id }} .account-curr-lang-wrap ul li a {
+    color: {{ section.settings.header_top_menu_color }};
+}
+  
+    
+  #section-{{ section.id }} .account-curr-lang-wrap ul li:hover > a {
+    color: {{ section.settings.header_top_menu_hover_color }};
+}
+  
+
+  #section-{{ section.id }} .account-curr-lang-wrap ul li ul li a {
+    	 color: {{ section.settings.header_top_sub_menu_color }};
+}
+  #section-{{ section.id }} .account-curr-lang-wrap ul li ul li:hover > a {
+    color: {{ section.settings.header_top_sub_menu_hover_color }};
+}
+</style>
