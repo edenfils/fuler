@@ -1,0 +1,80 @@
+
+{% if section.settings.footer_bottom_enable %}
+<div class="footer-bottom pb-25 pt-25 gray-bg-2"  id="footer-bottom-{{ section.id }}">
+    <div class="container">
+        <div class="row">
+            {% if section.settings.copy_right_enable %}
+      <div class="{% if section.settings.payment_logo_enable %} col-md-6 {% else %} col-md-12 {% endif %} col-12">
+        <div class="copyright text-{% if section.settings.footer_text_style == 'copy_style_left' %}left{% elsif section.settings.footer_text_style == 'copy_style_center' %}center{% elsif section.settings.footer_text_style == 'copy_style_right' %}right{% endif %}">
+          <p>{{ section.settings.copy_right }}</p>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if section.settings.payment_logo_enable %}
+      <div class="{% if section.settings.copy_right_enable %} col-md-6 {% else %} col-md-12 {% endif %} col-12">
+        <div class="payment-img f-right text-{% if section.settings.footer_text_2_style == 'copy_style_2_left' %}left{% elsif section.settings.footer_text_2_style == 'copy_style_2_center' %}center{% elsif section.settings.footer_text_2_style == 'copy_style_2_right' %}right{% endif %}">
+          <a href="{{ section.settings.payment_logo_url }}">
+            <img alt="payment" src="{% if section.settings.payment_logo %}{{ section.settings.payment_logo | img_url: 'large' }}{% else %}http:\/\/via.placeholder.com\/364x42{% endif %}">
+          </a>
+        </div>
+      </div>
+      {% endif %}
+        
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+<style>
+  
+  
+  
+    #section-{{ section.id }} .footer-bottom {
+  background: {{ section.settings.bottom_bg_color }};
+}
+
+
+#section-{{ section.id }} .footer-bottom {
+  padding-top:{{ section.settings.section_padding_top_4 }}px;
+}
+
+#section-{{ section.id }} .footer-bottom{
+  padding-bottom:{{ section.settings.section_padding_bottom_4 }}px;
+}
+
+
+@media (min-width: 768px) and (max-width: 991px){
+
+  #section-{{ section.id }} .footer-bottom {
+    padding-top:{{ section.settings.section_padding_top_md_4 }}px;
+  }
+
+  #section-{{ section.id }} .footer-bottom {
+    padding-bottom:{{ section.settings.section_padding_bottom_md_4 }}px;
+  }
+
+}
+@media (max-width: 767px) {
+
+  #section-{{ section.id }} .footer-bottom {
+    padding-top:{{ section.settings.section_padding_top_xs_4 }}px;
+  }
+
+  #section-{{ section.id }} .footer-bottom {
+    padding-bottom:{{ section.settings.section_padding_bottom_xs_4 }}px;
+  }
+}
+
+
+#section-{{ section.id }} .footer-bottom .copyright > p {
+  color: {{ section.settings.copy_right_color }};
+}
+
+#section-{{ section.id }} .footer-bottom .copyright > p a {
+  color: {{ section.settings.copy_anchor_color }};
+}
+
+
+</style> 
