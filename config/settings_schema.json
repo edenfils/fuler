@@ -8,6 +8,34 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "General Settings",
+    "settings": [{
+      "type": "header",
+      "content": "Favicon"
+    }, {
+      "type": "checkbox",
+      "id": "favicon_enable",
+      "label": "Use custom icon"
+    }, {
+      "type": "image",
+      "id": "favicon.png",
+      "label": "Icon",
+      "max-width": 32,
+      "max-height": 32,
+      "info": "32 x 32px .png required"
+    }, {
+      "type": "header",
+      "content": "Recommended Info",
+      "info": "---------"
+    }, {
+      "type": "checkbox",
+      "id": "recommended",
+      "label": "Recommended Info Enable ?",
+      "default": true,
+      "info": "You can Enable\/Dsiable Recommended Info from the settings"
+    }]
+  },
+  {
     "name": "WellCome Text",
     "settings": [{
       "type": "text",
