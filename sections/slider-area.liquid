@@ -1,0 +1,460 @@
+<div class="slider-area" id="section-{{ section.id }}" data-section="FullWidthSlider">
+
+    {%- capture data_carousel_options -%}
+  data-owl-carousel='{
+  	"animateOut": "fadeOut",
+    "animateIn": "fadeIn",
+    {%- if section.settings.autoplay_true -%}
+    "autoplay": true,
+    "autoplayTimeout": {{ section.settings.autoplay_speed }},
+  	{%- endif -%}
+    {%- if settings.rtl_enable -%}
+    "rtl": true,
+    {%- endif -%}
+   "loop": true,
+   "nav": true,
+   "navText": ["<i class=&#x27;fa fa-angle-left&#x27;></i>","<i class=&#x27;fa fa-angle-right&#x27;></i>"],
+    "items": 1
+  }'
+  {%- endcapture -%}
+
+
+        <div class="slider-active owl-dot-style owl-carousel" {{ data_carousel_options }}>
+
+            {% for block in section.blocks %}
+
+            {% case block.type %}
+                {% when 'slider' %}
+                    
+            <div class="single-slider pt-175 pb-250 bg-img" style="background-image:url({% if block.settings.slider_img %}{{ block.settings.slider_img | img_url: 'master' }}{% else %}http:\/\/via.placeholder.com\/1950x705{% endif %});" id="{{ block.id }}">
+                <div class="container">
+                    <div class="slider-content slider-animated-1 text-{% if block.settings.text_style == 'text_style_left' %}left{% elsif block.settings.text_style == 'text_style_center' %}center{% elsif block.settings.text_style == 'text_style_right' %}right{% endif %}">
+                        {% if block.settings.slider_subtitle != '' %}
+                        <h3 class="animated">{{ block.settings.slider_subtitle }}</h3>
+                        {% endif %}
+                        {% if block.settings.slider_title != '' %}
+                        <h1 class="animated">{{ block.settings.slider_title }}</h1>
+                        {% endif %}
+                        {% if block.settings.slider_description != '' %}
+                        <h5 class="animated">{{ block.settings.slider_description }}</h5>
+                        {% endif %}
+                        {% if block.settings.slider_button != '' %}
+                        <div class="slider-btn mt-45">
+                          <a class="animated" href="{{ block.settings.slider_button_url }}">{{ block.settings.slider_button }}</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+                    
+            {% endcase %}
+            {% endfor %}
+        </div>
+    
+</div>
+
+
+{%- render 'section-style' -%}
+
+
+<style>
+    {% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'slider' %}
+  
+  #block-{{ block.id }} .slider-content h3 {
+    color: {{ block.settings.subtitle_color }};
+}
+  #block-{{ block.id }} .slider-content h1 {
+    color: {{ block.settings.title_color }};
+}
+  #block-{{ block.id }} .slider-content h5 {
+        color: {{ block.settings.description_color }};
+}
+  #block-{{ block.id }} .slider-btn a {
+    background-color: {{ block.settings.button_bg_color }};
+    color: {{ block.settings.button_text_color }};
+}
+  
+  #block-{{ block.id }} .slider-btn a:hover {
+    background-color: {{ block.settings.button_bg_hover_color }};
+    color: {{ block.settings.button_text_hover_color }};
+}
+    {% endcase %}
+    {% endfor %}
+
+  
+  
+  #section-{{ section.id }} .slider-active.owl-carousel > .owl-nav div {
+    background-color: {{ section.settings.arrow_bg_color }};
+    color: {{ section.settings.arrow_icon_color }};
+}
+  
+  #section-{{ section.id }} .slider-active.owl-carousel > .owl-nav div:hover {
+    background-color: {{ section.settings.arrow_bg_hover_color }};
+    color: {{ section.settings.arrow_icon_hover_color }};
+}
+</style>
+
+
+{% schema %}
+  {
+    "name": "Slider",
+    "settings": [
+		{
+			"type": "header",
+            "content": "Options"
+        },
+		{
+          "type": "checkbox",
+          "id": "autoplay_true",
+          "label": "Autoplay Enable",
+          "default": true
+      	},
+		{
+            "type": "range",
+            "id": "autoplay_speed",
+            "min": 1000,
+            "max": 9000,
+            "step": 1000,
+            "label": "Autoplay Speed",
+            "unit": "ms",
+            "default": 8000
+        },
+		{
+          "type": "header",
+          "content": "Color"
+        },
+        {
+          "type": "color",
+          "id": "arrow_icon_color",
+          "label": "Arrow Icon Color",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "arrow_bg_color",
+          "label": "Arrow BG Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "arrow_icon_hover_color",
+          "label": "Arrow Icon Hover Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "arrow_bg_hover_color",
+          "label": "Arrow BG Hover Color",
+          "default": "#ff3d2a"
+        }
+		
+	],
+	"blocks": [
+		{
+          "type": "slider",
+          "name": "Slide",
+          "settings": [
+				{
+                    "type": "image_picker",
+                    "id": "slider_img",
+                    "label": "Image",
+                    "info": "Recommended Size: 1950 x 705px"
+                },
+				{
+                   "type": "header",
+                   "content": "Text Style"
+                },
+                {
+                     "type": "radio",
+                     "id": "text_style",
+                     "label": "Text Style",
+                     "options":[
+                       {
+                           "value":"text_style_left",
+                           "label": "Left"
+                       },
+                       {
+                           "value":"text_style_center",
+                           "label": "center"
+                       },
+                       {
+                           "value":"text_style_right",
+                           "label": "right"
+                       }
+
+                      ],
+
+                     "default": "text_style_left"
+                },
+                {
+                    "type": "text",
+                    "id": "slider_subtitle",
+                    "label": "Slider Subtitle",
+                    "default": "New Arrivals"
+                },
+				{
+                    "type": "text",
+                    "id": "slider_title",
+                    "label": "Slider Title",
+                    "default": "For Mother’s Day!"
+                },
+				{
+                    "type": "textarea",
+                    "id": "slider_description",
+                    "label": "Slider Description",
+                    "default": "Exclusive Offer -10% Off This Week"
+                },
+                {
+                    "type": "text",
+                    "id": "slider_button",
+                    "label": "Button",
+                    "default": "shop Now"
+                },
+                {
+                    "type": "url",
+                    "id": "slider_button_url",
+                    "label": "URL"
+                },
+                  {
+                    "type": "header",
+                    "content": "Color"
+                  },
+                  {
+                    "type": "color",
+                    "id": "subtitle_color",
+                    "label": "Sub-title Color",
+                    "default": "#ff3d2a"
+                  },
+                  {
+                    "type": "color",
+                    "id": "title_color",
+                    "label": "Title Color",
+                    "default": "#171e26"
+                  },
+                  {
+                    "type": "color",
+                    "id": "description_color",
+                    "label": "Description Color",
+                    "default": "#242424"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_text_color",
+                    "label": "Button Text Color",
+                    "default": "#fff"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_bg_color",
+                    "label": "Button BG Color",
+                    "default": "#ff3d2a"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_text_hover_color",
+                    "label": "Button Text Hover Color",
+                    "default": "#ff3d2a"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_bg_hover_color",
+                    "label": "Button BG Hover Color",
+                    "default": "#fff"
+                  }
+            ]
+      	},
+	   {
+          "type": "section_padding",
+          "name": "Section Padding",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 100
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 80
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 60
+			}
+          ]
+       },
+	   {
+          "type": "section_margin",
+          "name": "Section Margin",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			}
+          ]
+       },
+	   {
+          "type": "section_background",
+          "name": "Section Background",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "image_picker",
+			  "id": "section_bg_image",
+			  "label": "BG Image"
+			},
+			{
+			  "type": "color",
+			  "id": "section_bg_color",
+			  "label": "BG Color",
+			  "default": "#ffffff"
+			}
+          ]
+       }
+	],
+    "presets":[
+        {
+            "name": "Slider",
+            "category": "1. slideshow",
+		  "blocks":[
+				{
+					"type": "slider"
+				},
+				{
+					"type": "slider"
+				}
+			]
+        }
+    ]
+  }
+{% endschema %}
