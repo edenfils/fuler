@@ -54,10 +54,10 @@
             "subtitle_color": "#ff3d2a",
             "title_color": "#171e26",
             "description_color": "#242424",
-            "button_text_color": "#fff",
+            "button_text_color": "#ffffff",
             "button_bg_color": "#ff3d2a",
             "button_text_hover_color": "#ff3d2a",
-            "button_bg_hover_color": "#fff"
+            "button_bg_hover_color": "#ffffff"
           }
         }
       },
@@ -74,9 +74,74 @@
         "arrow_icon_hover_color": "#ffffff",
         "arrow_bg_hover_color": "#ff3d2a"
       }
+    },
+    "16530074273ac5893a": {
+      "type": "banner-area",
+      "blocks": {
+        "1653007427d5be7ac6-0": {
+          "type": "banner",
+          "settings": {
+            "multiple_banner_coloum": "4",
+            "effect_snow_enable": false,
+            "banner_img": "shopify:\/\/shop_images\/banner-1.png",
+            "banner_img_url": "",
+            "banner_title": "Camellias",
+            "banner_button": "shop Now",
+            "banner_button_url": "",
+            "title_color": "#fff",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#fff",
+            "button_text_hover_color": "#ff3d2a",
+            "button_border_hover_color": "#ff3d2a"
+          }
+        },
+        "1653007427d5be7ac6-1": {
+          "type": "banner",
+          "settings": {
+            "multiple_banner_coloum": "4",
+            "effect_snow_enable": false,
+            "banner_img": "shopify:\/\/shop_images\/banner-3.png",
+            "banner_img_url": "",
+            "banner_title": "Camellias",
+            "banner_button": "shop Now",
+            "banner_button_url": "",
+            "title_color": "#fff",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#fff",
+            "button_text_hover_color": "#ff3d2a",
+            "button_border_hover_color": "#ff3d2a"
+          }
+        },
+        "1653007427d5be7ac6-2": {
+          "type": "banner",
+          "settings": {
+            "multiple_banner_coloum": "4",
+            "effect_snow_enable": false,
+            "banner_img": "shopify:\/\/shop_images\/banner-2.png",
+            "banner_img_url": "",
+            "banner_title": "Camellias",
+            "banner_button": "shop Now",
+            "banner_button_url": "",
+            "title_color": "#fff",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#fff",
+            "button_text_hover_color": "#ff3d2a",
+            "button_border_hover_color": "#ff3d2a"
+          }
+        }
+      },
+      "block_order": [
+        "1653007427d5be7ac6-0",
+        "1653007427d5be7ac6-1",
+        "1653007427d5be7ac6-2"
+      ],
+      "settings": {
+        "section_margin_top_2": "-75"
+      }
     }
   },
   "order": [
-    "1653001541b34a7c69"
+    "1653001541b34a7c69",
+    "16530074273ac5893a"
   ]
 }

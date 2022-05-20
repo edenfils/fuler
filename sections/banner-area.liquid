@@ -1,0 +1,393 @@
+<div class="banner-area" id="section-{{ section.id }}">
+    <div class="container">
+        <div class="banner-wrap">
+            <div class="row">
+
+                {% for block in section.blocks %}
+                {% case block.type %}
+                {% when 'banner' %}
+                <div class="col-lg-{{ block.settings.multiple_banner_coloum }} col-md-6 col-12"
+                    id="block-{{block.id }}">
+                    <div class="single-banner img-zoom mb-30">
+                        {% if block.settings.effect_snow_enable %}
+                        <span id="block-{{ block.id }}" class="body-effect effect-snow"></span>
+                        {% endif %}
+
+
+                        <a href="{{ block.settings.banner_img_url }}">
+                            <img src="{% if block.settings.banner_img %}{{ block.settings.banner_img | img_url: 'master' }}{% else %}http:\/\/via.placeholder.com\/620x300{% endif %}"
+                                alt="{{ block.settings.banner_img.alt }}">
+                        </a>
+
+
+                        <div class="banner-content">
+                            {% if block.settings.banner_title != '' %}
+                            <h4>{{ block.settings.banner_title }}</h4>
+                            {% endif %}
+                            {% if block.settings.banner_button != '' %}
+                            <a href="{{ block.settings.banner_button_url }}">{{ block.settings.banner_button }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                {% endcase %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{%- render 'section-style' -%}
+
+<style>
+
+  #section-{{ section.id }} .banner-wrap {
+    margin-top: {{ section.settings.section_margin_top_2 }}px;
+}
+  
+  
+        {% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'banner' %}
+  
+      
+  #block-{{ block.id }}.effect-snow {
+    background-image: url({% if block.settings.effect_img %}{{ block.settings.effect_img | img_url: 'master' }}{% else %}http:\/\/via.placeholder.com\/500x500{% endif %});
+    -webkit-animation: snow 20s linear infinite;
+    animation: snow 20s linear infinite;
+}
+  
+   #block-{{ block.id }} .banner-content > h4 {
+    color: {{ block.settings.title_color }};
+}
+   #block-{{ block.id }} .banner-content > a {
+    border-bottom: 1px solid {{ block.settings.button_border_color }};
+    color: {{ block.settings.button_text_color }};
+}
+  
+   #block-{{ block.id }} .banner-content > a:hover {
+    border-bottom: 1px solid {{ block.settings.button_border_hover_color }};
+    color: {{ block.settings.button_text_hover_color }};
+}
+  
+    {% endcase %}
+    {% endfor %}
+  
+  
+  
+</style> 
+
+
+
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+		{
+            "type": "header",
+            "content": "Banner Wraper Margin"
+        },
+        {
+            "type": "text",
+            "id": "section_margin_top_2",
+            "label": "Section Margin Top",
+            "default": "-75" ,
+            "info": "Defined in pixels. Do not add the 'px' unit."
+        }
+	],		
+	"blocks":[
+      {
+         "type": "banner",
+         "name": "Banner",
+         "settings": [
+			{
+				"type": "text",
+				"id": "multiple_banner_coloum",
+				"label": "Banner Column",
+                "default": "4",
+                "info": "Follow Bootstrap Column"
+             },
+              {
+                "type": "checkbox",
+                "id": "effect_snow_enable",
+                "label": "Effect Snow Enable",
+                "default": true
+              },
+				{
+                    "type": "image_picker",
+                    "id": "effect_img",
+                    "label": "Snow Image",
+                    "info": "Recommended Size: 500 x 500px"
+                },
+			{
+				"type": "image_picker",
+				"id": "banner_img",
+				"label": "Image",
+				"info": "Recommended Size: 620 x 300px"
+		    },
+			{
+				"type": "url",
+				"id": "banner_img_url",
+				"label": "URL"
+		    },
+			{
+                "type": "header",
+                "content": "Banner Content"
+            },
+            {
+              "type": "text",
+              "id": "banner_title",
+              "label": "Banner Title",
+              "default": "Camellias"
+            },
+            {
+              "type": "text",
+              "id": "banner_button",
+              "label": "Button",
+              "default": "shop Now"
+            },
+            {
+              "type": "url",
+              "id": "banner_button_url",
+              "label": "URL"
+            },
+                  {
+                    "type": "header",
+                    "content": "Color"
+                  },
+                  {
+                    "type": "color",
+                    "id": "title_color",
+                    "label": "Title Color",
+                    "default": "#fff"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_text_color",
+                    "label": "Button Text Color",
+                    "default": "#ffffff"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_border_color",
+                    "label": "Button Border Color",
+                    "default": "#fff"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_text_hover_color",
+                    "label": "Button Text Hover Color",
+                    "default": "#ff3d2a"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_border_hover_color",
+                    "label": "Button Border Hover Color",
+                    "default": "#ff3d2a"
+                  }
+        ]
+       },
+	   {
+          "type": "section_padding",
+          "name": "Section Padding",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 100
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 80
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 60
+			}
+          ]
+       },
+	   {
+          "type": "section_margin",
+          "name": "Section Margin",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			}
+          ]
+       },
+	   {
+          "type": "section_background",
+          "name": "Section Background",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "image_picker",
+			  "id": "section_bg_image",
+			  "label": "BG Image"
+			},
+			{
+			  "type": "color",
+			  "id": "section_bg_color",
+			  "label": "BG Color",
+			  "default": "#ffffff"
+			}
+          ]
+       }
+    ],
+    "presets":[
+        {
+            "name": "Banner",
+            "category": "2. banner",
+		  "blocks":[
+				{
+					"type": "banner"
+				},
+				{
+					"type": "banner"
+				},
+				{
+					"type": "banner"
+				}
+			]
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
