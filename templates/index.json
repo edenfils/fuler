@@ -88,9 +88,9 @@
             "banner_title": "Camellias",
             "banner_button": "shop Now",
             "banner_button_url": "",
-            "title_color": "#fff",
+            "title_color": "#ffffff",
             "button_text_color": "#ffffff",
-            "button_border_color": "#fff",
+            "button_border_color": "#ffffff",
             "button_text_hover_color": "#ff3d2a",
             "button_border_hover_color": "#ff3d2a"
           }
@@ -105,9 +105,9 @@
             "banner_title": "Camellias",
             "banner_button": "shop Now",
             "banner_button_url": "",
-            "title_color": "#fff",
+            "title_color": "#ffffff",
             "button_text_color": "#ffffff",
-            "button_border_color": "#fff",
+            "button_border_color": "#ffffff",
             "button_text_hover_color": "#ff3d2a",
             "button_border_hover_color": "#ff3d2a"
           }
@@ -122,9 +122,9 @@
             "banner_title": "Camellias",
             "banner_button": "shop Now",
             "banner_button_url": "",
-            "title_color": "#fff",
+            "title_color": "#ffffff",
             "button_text_color": "#ffffff",
-            "button_border_color": "#fff",
+            "button_border_color": "#ffffff",
             "button_text_hover_color": "#ff3d2a",
             "button_border_hover_color": "#ff3d2a"
           }
@@ -138,10 +138,70 @@
       "settings": {
         "section_margin_top_2": "-75"
       }
+    },
+    "165316547492cdd7dd": {
+      "type": "tab-product",
+      "blocks": {
+        "1653165474f18ccde1-0": {
+          "type": "tab-product",
+          "settings": {
+            "collection": "vans"
+          }
+        },
+        "1653165474f18ccde1-1": {
+          "type": "tab-product",
+          "settings": {
+            "collection": "nike"
+          }
+        },
+        "1653165474f18ccde1-2": {
+          "type": "tab-product",
+          "settings": {
+            "collection": "converse"
+          }
+        },
+        "1653165474f18ccde1-3": {
+          "type": "section_padding",
+          "settings": {
+            "section_padding_top": 0,
+            "section_padding_bottom": 100,
+            "section_padding_top_md": 0,
+            "section_padding_bottom_md": 80,
+            "section_padding_top_xs": 0,
+            "section_padding_bottom_xs": 60
+          }
+        }
+      },
+      "block_order": [
+        "1653165474f18ccde1-0",
+        "1653165474f18ccde1-1",
+        "1653165474f18ccde1-2",
+        "1653165474f18ccde1-3"
+      ],
+      "settings": {
+        "section_title_enable": true,
+        "section_title": "Featured Products",
+        "section_border_enable": true,
+        "product_limit_handle": 8,
+        "autoplay_true": false,
+        "autoplay_speed": 8000,
+        "product_column": 4,
+        "product_column_md": 3,
+        "product_column_sm": 1,
+        "section_title_color": "#242424",
+        "section_border_color": "#eeeeee",
+        "title_color": "#242424",
+        "active_title_color": "#ff3d2a",
+        "arrow_text_color": "#242424",
+        "arrow_bg_color": "#efefef",
+        "arrow_text_hover_color": "#ffffff",
+        "arrow_bg_hover_color": "#ff3d2a"
+      }
     }
   },
   "order": [
     "1653001541b34a7c69",
-    "16530074273ac5893a"
+    "16530074273ac5893a",
+    "165316547492cdd7dd"
   ]
 }
