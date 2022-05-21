@@ -8,6 +8,15 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "RTL",
+    "settings": [{
+      "type": "checkbox",
+      "id": "rtl_enable",
+      "label": "Enable RTL",
+      "default": false
+    }]
+  },
+  {
     "name": "General Settings",
     "settings": [{
       "type": "header",
@@ -70,6 +79,54 @@
       "label": "Supported currencies",
       "default": "USD, USD - US Dollar | EUR, EUR - Euro | GBP, GBP - British Pound",
       "info": "Ex: USD, USD - US Dollar | EUR, EUR - Euro | GBP, GBP - British Pound | INR, INR - Indian Rupee"
+    }]
+  },
+  {
+    "name": "Product Quickview",
+    "settings": [{
+      "type": "checkbox",
+      "id": "product_quickview_description_enable",
+      "label": "Show Short Description",
+      "default": true
+    }, {
+      "type": "text",
+      "id": "qv_add_to_cart",
+      "label": "Add To Cart Button Tilte",
+      "default": "Add To Cart"
+    }, {
+      "type": "text",
+      "id": "qv_added",
+      "label": "Added Button Title",
+      "default": "Added"
+    }, {
+      "type": "text",
+      "id": "qv_wait",
+      "label": "Wait Button Title",
+      "default": "Wait..."
+    }, {
+      "type": "text",
+      "id": "qv_limit_product",
+      "label": "Limit Button Title",
+      "default": "limit products"
+    }, {
+      "type": "header",
+      "content": "Product Compare"
+    }, {
+      "type": "checkbox",
+      "id": "compare_product_enalbe",
+      "label": "Show Product Compare",
+      "default": true
+    }, {
+      "type": "text",
+      "id": "compare_popup_title",
+      "label": "Compare Popup title",
+      "default": "Compare Product"
+    }, {
+      "type": "text",
+      "id": "compare_button_title",
+      "label": "Compare Button title",
+      "default": "Add to compare",
+      "info": "You can add any font icon HTML code"
     }]
   },
   {
