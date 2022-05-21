@@ -197,11 +197,85 @@
         "arrow_text_hover_color": "#ffffff",
         "arrow_bg_hover_color": "#ff3d2a"
       }
+    },
+    "1653170024dcb186cb": {
+      "type": "testimonial-area",
+      "blocks": {
+        "1653170024c4d3e5e4-0": {
+          "type": "testimonial",
+          "settings": {
+            "text_style": "text_style_center",
+            "author_image": "shopify:\/\/shop_images\/testi.png",
+            "author_image_enable": true,
+            "author_description": "When a beautiful design is combined with powerful technology,<br> it truly is an artwork. I love how my website operates and looks with this theme. <br>Thank you for the awesome product.",
+            "author_title": "Samia Robiul",
+            "testimonial_description_color": "#ffffff",
+            "testimonial_author_name_color": "#f1f0f0"
+          }
+        },
+        "1653170024c4d3e5e4-1": {
+          "type": "testimonial",
+          "settings": {
+            "text_style": "text_style_center",
+            "author_image": "shopify:\/\/shop_images\/testi.png",
+            "author_image_enable": true,
+            "author_description": "When a beautiful design is combined with powerful technology,<br> it truly is an artwork. I love how my website operates and looks with this theme. <br>Thank you for the awesome product.",
+            "author_title": "Manuel Robiul",
+            "testimonial_description_color": "#ffffff",
+            "testimonial_author_name_color": "#f1f0f0"
+          }
+        },
+        "1653170024c4d3e5e4-2": {
+          "type": "testimonial",
+          "settings": {
+            "text_style": "text_style_center",
+            "author_image": "shopify:\/\/shop_images\/testi.png",
+            "author_image_enable": true,
+            "author_description": "When a beautiful design is combined with powerful technology,<br> it truly is an artwork.",
+            "author_title": "Barbara Robiul",
+            "testimonial_description_color": "#ffffff",
+            "testimonial_author_name_color": "#f1f0f0"
+          }
+        },
+        "1653170024c4d3e5e4-3": {
+          "type": "section_padding",
+          "settings": {
+            "section_padding_top": 120,
+            "section_padding_bottom": 115,
+            "section_padding_top_md": 0,
+            "section_padding_bottom_md": 80,
+            "section_padding_top_xs": 0,
+            "section_padding_bottom_xs": 60
+          }
+        },
+        "1653170024c4d3e5e4-4": {
+          "type": "section_background",
+          "settings": {
+            "section_bg_image": "shopify:\/\/shop_images\/bg-1_0bad298c-1673-4b35-8d09-e67b68ee19d6.jpg",
+            "section_bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "1653170024c4d3e5e4-0",
+        "1653170024c4d3e5e4-1",
+        "1653170024c4d3e5e4-2",
+        "1653170024c4d3e5e4-3",
+        "1653170024c4d3e5e4-4"
+      ],
+      "settings": {
+        "testimonial_area_enable": true,
+        "autoplay_true": false,
+        "autoplay_speed": 8000,
+        "dot_color": "#ffffff",
+        "dot_active_color": "#ffffff"
+      }
     }
   },
   "order": [
     "1653001541b34a7c69",
     "16530074273ac5893a",
-    "165316547492cdd7dd"
+    "165316547492cdd7dd",
+    "1653170024dcb186cb"
   ]
 }

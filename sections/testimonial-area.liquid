@@ -1,0 +1,435 @@
+{% if section.settings.testimonial_area_enable %}
+<div class="testimonials-area bg-img" id="section-{{ section.id }}" data-section="Testimonial">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ms-auto col-12">
+
+                {%- capture data_carousel_options -%}
+                data-owl-carousel='{
+                "animateOut": "fadeOut",
+                "animateIn": "fadeIn",
+                {%- if section.settings.autoplay_true -%}
+                "autoplay": true,
+                "autoplayTimeout": {{ section.settings.autoplay_speed }},
+                {%- endif -%}
+                {%- if settings.rtl_enable -%}
+                "rtl": true,
+                {%- endif -%}
+                "dot": true,
+                "loop": true,
+                "items": 1,
+                "responsiveClass":true,
+                "responsive":{
+                "0":{ "items": 1 },
+                "600":{ "items": 1 },
+                "992":{ "items": 1 },
+                "1024":{ "items": 1 },
+                "1200":{ "items": 1 },
+                "1400":{ "items": 1 },
+                "1920":{ "items": 1 }
+                }
+
+                }'
+                {%- endcapture -%}
+                <div class="testimonial-active owl-carousel" {{ data_carousel_options }}>
+
+                    {% for block in section.blocks %}
+                    {% case block.type %}
+                    {% when 'testimonial' %}
+                    <div id="block-{{ block.id }}"
+                        class="single-testimonial text-{% if block.settings.text_style == 'text_style_left' %}left{% elsif block.settings.text_style == 'text_style_center' %}center{% elsif block.settings.text_style == 'text_style_right' %}right{% endif %}">
+
+
+                        {% if block.settings.author_image_enable %}
+                        <div class="testimonial-img">
+                            <img alt="testinonial_image"
+                                src="{% if block.settings.author_image %}{{ block.settings.author_image | img_url: 'compact' }}{% else %}http:\/\/via.placeholder.com\/150x150{% endif %}">
+                        </div>
+                        {% endif %}
+
+
+                        {% if block.settings.author_description != '' %}
+                        <p>{{ block.settings.author_description }}</p>
+                        {% endif %}
+
+                        {% if block.settings.author_title != '' %}
+                        <h4>{{ block.settings.author_title }}</h4>
+                        {% endif %}
+
+                    </div>
+                    {% endcase %}
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{%- render 'section-style' -%}
+
+
+<style>
+
+    {% for block in section.blocks %}
+{% case block.type %}
+{% when 'testimonial' %}
+
+#block-{{ block.id }}.single-testimonial > p {
+color: {{ block.settings.testimonial_description_color }};
+}
+#block-{{ block.id }}.single-testimonial > h4 {
+color: {{ block.settings.testimonial_author_name_color }};
+
+}
+
+
+          {% endcase %}
+{% endfor %}
+
+
+#section-{{ section.id }} .testimonial-active .owl-dot {
+background: {{ section.settings.dot_color }} none repeat scroll 0 0;
+}
+
+#section-{{ section.id }} .testimonial-active .owl-dot.active {
+background: {{ section.settings.dot_active_color }} none repeat scroll 0 0;
+}
+
+
+</style> 
+
+
+  
+{% schema %}
+  {
+    "name": "Testimonial",
+    "settings": [
+		{
+            "type": "header",
+            "content": "Testimonial"
+        },
+        {
+          "type": "checkbox",
+          "id": "testimonial_area_enable",
+          "label": "Testimonial Area Enable",
+          "default": true
+        },
+		{
+			"type": "header",
+            "content": "Options"
+        },
+		{
+          "type": "checkbox",
+          "id": "autoplay_true",
+          "label": "Autoplay Enable",
+          "default": false
+      	},
+		{
+            "type": "range",
+            "id": "autoplay_speed",
+            "min": 1000,
+            "max": 9000,
+            "step": 1000,
+            "label": "Autoplay Speed",
+            "unit": "ms",
+            "default": 8000
+        },
+        {
+          "type": "color",
+          "id": "dot_color",
+          "label": "Dot Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "dot_active_color",
+          "label": "Dot Active Color",
+          "default": "#fff"
+        }
+	],		
+	"blocks":[
+      {
+         "type": "testimonial",
+         "name": "Testimonial",
+         "settings": [
+            {
+              "type": "header",
+              "content": "Text Style"
+            },
+            {
+              "type": "radio",
+              "id": "text_style",
+              "label": "Text Style",
+              "options":[
+                {
+                  "value":"text_style_left",
+                  "label": "Left"
+                },
+                {
+                  "value":"text_style_center",
+                  "label": "center"
+                },
+                {
+                  "value":"text_style_right",
+                  "label": "right"
+                }
+
+              ],
+
+              "default": "text_style_center"
+            },
+			{
+				"type": "image_picker",
+				"id": "author_image",
+				"label": "Author Image",
+				"info": "Recommended Size: 150 x 150px"
+		    },
+            {
+              "type": "checkbox",
+              "id": "author_image_enable",
+              "label": "Author Image Enable",
+              "default": true
+            },
+            {
+                "type": "textarea",
+                "id": "author_description",
+                "label": "Author Description",
+                "default": "When a beautiful design is combined with powerful technology,<br> it truly is an artwork. I love how my website operates and looks with this theme. <br>Thank you for the awesome product. ",
+				"info": "Use Of <br>"
+            },
+            {
+                "type": "text",
+                "id": "author_title",
+                "label": "Author Title",
+                "default": "Samia Robiul"
+            },
+                  {
+                    "type": "header",
+                    "content": "Color"
+                  },
+                  {
+                    "type": "color",
+                    "id": "testimonial_description_color",
+                    "label": "Description Color",
+                    "default": "#fff"
+                  },
+                  {
+                    "type": "color",
+                    "id": "testimonial_author_name_color",
+                    "label": "Author  Name Color",
+                    "default": "#f1f0f0"
+                  }
+        ]
+      },
+	  {
+          "type": "section_padding",
+          "name": "Section Padding",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 100
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 80
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 60
+			}
+          ]
+       },
+	   {
+          "type": "section_margin",
+          "name": "Section Margin",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			}
+          ]
+       },
+	   {
+          "type": "section_background",
+          "name": "Section Background",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "image_picker",
+			  "id": "section_bg_image",
+			  "label": "BG Image"
+			},
+			{
+			  "type": "color",
+			  "id": "section_bg_color",
+			  "label": "BG Color",
+			  "default": "#ffffff"
+			}
+          ]
+       }
+    ],
+    "presets":[
+        {
+            "name": "Testimonial",
+            "category": "4. About",
+		  "blocks":[
+				{
+					"type": "testimonial"
+				},
+				{
+					"type": "testimonial"
+				},
+				{
+					"type": "testimonial"
+				},
+				{
+					"type": "section_padding"
+				},
+				{
+					"type": "section_background"
+				}
+			]
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
