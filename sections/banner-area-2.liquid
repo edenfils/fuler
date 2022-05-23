@@ -1,0 +1,456 @@
+<div class="new-year-offer-area" id="section-{{ section.id }}">
+    <div class="container">
+        <div class="new-year-offer-wrap bg-img"
+            style="background-image:url({% if section.settings.banner_img %}{{ section.settings.banner_img | img_url: 'master' }}{% else %}http:\/\/via.placeholder.com\/620x300{% endif %});">
+            <div
+                class="new-year-offer-content text-{% if section.settings.text_style == 'text_style_left' %}left{% elsif section.settings.text_style == 'text_style_center' %}center{% elsif section.settings.text_style == 'text_style_right' %}right{% endif %}">
+                {% if section.settings.banner_subtitle != '' %}
+                <h4>{{ section.settings.banner_subtitle }}</h4>
+                {% endif %}
+                {% if section.settings.banner_title != '' %}
+                <h3>{{ section.settings.banner_title }}</h3>
+                {% endif %}
+                {% if section.settings.banner_button != '' %}
+                <a href="{{ section.settings.banner_button_url }}">{{ section.settings.banner_button }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{%- render 'section-style' -%}
+
+<style>
+    
+    #section-{{ section.id }} .new-year-offer-wrap {
+    padding-top:{{ section.settings.section_padding_top_1 }}px;
+  }
+
+  #section-{{ section.id }} .new-year-offer-wrap {
+    padding-bottom:{{ section.settings.section_padding_bottom_1 }}px;
+  }
+
+
+  @media (min-width: 768px) and (max-width: 991px){
+
+   #section-{{ section.id }}  .new-year-offer-wrap {
+      padding-top:{{ section.settings.section_padding_top_md_1 }}px;
+    }
+
+    #section-{{ section.id }} .new-year-offer-wrap {
+      padding-bottom:{{ section.settings.section_padding_bottom_md_1 }}px;
+    }
+
+  }
+  @media (max-width: 767px) {
+
+    #section-{{ section.id }} .new-year-offer-wrap {
+      padding-top:{{ section.settings.section_padding_top_xs_1 }}px;
+    }
+
+    #section-{{ section.id }} .new-year-offer-wrap {
+      padding-bottom:{{ section.settings.section_padding_bottom_xs_1 }}px;
+    }
+  }
+
+  
+  
+  #section-{{ section.id }} .new-year-offer-content > h4 {
+    color:  {{ section.settings.subtitle_color }};
+}
+  
+  #section-{{ section.id }} .new-year-offer-content > h3 {
+    color: {{ section.settings.title_color }};
+}
+  
+  #section-{{ section.id }} .new-year-offer-content > a {
+    color:{{ section.settings.button_text_color }};
+    background-color: {{ section.settings.button_bg_color }};
+    border: 1px solid {{ section.settings.button_border_color }};
+}
+  
+  #section-{{ section.id }} .new-year-offer-content > a:hover {
+    color: {{ section.settings.button_text_hover_color }};
+     border: 1px solid {{ section.settings.button_border_hover_color }};
+    background-color: {{ section.settings.button_bg_hover_color }};
+}
+    
+    
+</style>
+
+{% schema %}
+  {
+    "name": "Banner 2",
+    "settings": [
+        {
+          "type": "header",
+          "content": "Section Inner Padding"
+        },
+		{
+          "type": "header",
+          "content": "Large/Desktop Device"
+		},
+        {
+          "type": "text",
+          "id": "section_padding_top_1",
+          "label": "Section Padding Top",
+          "default": "75" ,
+          "info": "Defined in pixels. Do not add the 'px' unit."
+        },
+        {
+          "type": "text",
+          "id": "section_padding_bottom_1",
+          "label": "Section Padding Bottom",
+          "default": "75" ,
+          "info": "Defined in pixels. Do not add the 'px' unit."
+        },
+        {
+          "type": "header",
+          "content": "Tablet Device"
+        },
+        {
+          "type": "text",
+          "id": "section_padding_top_md_1",
+          "label": "Section Padding Top",
+          "default": "75" ,
+          "info": "Defined in pixels. Do not add the 'px' unit."
+        },
+        {
+          "type": "text",
+          "id": "section_padding_bottom_md_1",
+          "label": "Section Padding Bottom",
+          "default": "75" ,
+          "info": "Defined in pixels. Do not add the 'px' unit."
+        },
+        {
+          "type": "header",
+          "content": "Mobile Device"
+        },
+        {
+          "type": "text",
+          "id": "section_padding_top_xs_1",
+          "label": "Section Padding Top",
+          "default": "75" ,
+          "info": "Defined in pixels. Do not add the 'px' unit."
+        },
+        {
+          "type": "text",
+          "id": "section_padding_bottom_xs_1",
+          "label": "Section Padding Bottom",
+          "default": "75" ,
+          "info": "Defined in pixels. Do not add the 'px' unit."
+        },
+        {
+          "type": "header",
+          "content": "Banner Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_img",
+          "label": "Image",
+          "info": "Recommended Size: 620 x 300px"
+        },
+        {
+          "type": "header",
+          "content": "Banner Content"
+        },
+        {
+          "type": "header",
+          "content": "Text Style"
+        },
+        {
+          "type": "radio",
+          "id": "text_style",
+          "label": "Text Style",
+          "options":[
+            {
+              "value":"text_style_left",
+              "label": "Left"
+            },
+            {
+              "value":"text_style_center",
+              "label": "center"
+            },
+            {
+              "value":"text_style_right",
+              "label": "right"
+            }
+
+          ],
+
+          "default": "text_style_center"
+        },
+        {
+          "type": "text",
+          "id": "banner_subtitle",
+          "label": "Banner SubTitle",
+          "default": "New Year Offer"
+        },
+        {
+          "type": "text",
+          "id": "banner_title",
+          "label": "Banner Title",
+          "default": "Fresh flowers for any special occasion"
+        },
+		{
+          "type": "text",
+          "id": "banner_button",
+          "label": "Button",
+          "default": "Discover now"
+        },
+        {
+          "type": "url",
+          "id": "banner_button_url",
+          "label": "URL"
+        },
+                  {
+                    "type": "header",
+                    "content": "Color"
+                  },
+                  {
+                    "type": "color",
+                    "id": "subtitle_color",
+                    "label": "Sub-title Color",
+                    "default": "#fff"
+                  },
+                  {
+                    "type": "color",
+                    "id": "title_color",
+                    "label": "Title Color",
+                    "default": "#fff"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_text_color",
+                    "label": "Button Text Color",
+                    "default": "#fff"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_bg_color",
+                    "label": "Button BG Color",
+                    "default": "#fff"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_border_color",
+                    "label": "Button Border Color",
+                    "default": "#fff"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_text_hover_color",
+                    "label": "Button Text Hover Color",
+                    "default": "#242424"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_bg_hover_color",
+                    "label": "Button BG Hover Color",
+                    "default": "#fff"
+                  },
+                  {
+                    "type": "color",
+                    "id": "button_border_hover_color",
+                    "label": "Button Border Hover Color",
+                    "default": "#fff"
+                  }
+	],
+	"blocks":[
+	   {
+          "type": "section_padding",
+          "name": "Section Padding",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 100
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 80
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 60
+			}
+          ]
+       },
+	   {
+          "type": "section_margin",
+          "name": "Section Margin",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			}
+          ]
+       },
+	   {
+          "type": "section_background",
+          "name": "Section Background",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "image_picker",
+			  "id": "section_bg_image",
+			  "label": "BG Image"
+			},
+			{
+			  "type": "color",
+			  "id": "section_bg_color",
+			  "label": "BG Color",
+			  "default": "#ffffff"
+			}
+          ]
+       }
+	],
+    "presets":[
+        {
+            "name": "Banner 2",
+            "category": "2. banner",
+		  "blocks":[
+				{
+					"type": "section_margin"
+				}
+			]
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

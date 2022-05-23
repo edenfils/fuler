@@ -327,8 +327,8 @@
         "1653176096cbd79885-2": {
           "type": "section_padding",
           "settings": {
-            "section_padding_top": 0,
-            "section_padding_bottom": 100,
+            "section_padding_top": 70,
+            "section_padding_bottom": 70,
             "section_padding_top_md": 0,
             "section_padding_bottom_md": 80,
             "section_padding_top_xs": 0,
@@ -338,7 +338,7 @@
         "1653176096cbd79885-3": {
           "type": "section_background",
           "settings": {
-            "section_bg_color": "#ffffff"
+            "section_bg_color": "#f8f9f9"
           }
         }
       },
@@ -349,8 +349,8 @@
         "1653176096cbd79885-3"
       ],
       "settings": {
-        "section_padding_top_1": "75",
-        "section_padding_bottom_1": "70",
+        "section_padding_top_1": "",
+        "section_padding_bottom_1": "",
         "section_padding_top_md_1": "0",
         "section_padding_bottom_md_1": "0",
         "section_padding_top_xs_1": "0",
@@ -382,8 +382,8 @@
         "1653343520bc65d7ba-0": {
           "type": "section_padding",
           "settings": {
-            "section_padding_top": 0,
-            "section_padding_bottom": 100,
+            "section_padding_top": 70,
+            "section_padding_bottom": 70,
             "section_padding_top_md": 0,
             "section_padding_bottom_md": 80,
             "section_padding_top_xs": 0,
@@ -409,8 +409,49 @@
         "section_border_color": "#eeeeee",
         "arrow_text_color": "#242424",
         "arrow_bg_color": "#efefef",
-        "arrow_text_hover_color": "#fff",
+        "arrow_text_hover_color": "#ffffff",
         "arrow_bg_hover_color": "#ff3d2a"
+      }
+    },
+    "165334734135aebdfd": {
+      "type": "banner-area-2",
+      "blocks": {
+        "165334734134db7f41-0": {
+          "type": "section_margin",
+          "settings": {
+            "section_margin_top": 0,
+            "section_margin_bottom": 75,
+            "section_margin_top_md": 0,
+            "section_margin_bottom_md": 0,
+            "section_margin_top_xs": 0,
+            "section_margin_bottom_xs": 0
+          }
+        }
+      },
+      "block_order": [
+        "165334734134db7f41-0"
+      ],
+      "settings": {
+        "section_padding_top_1": "75",
+        "section_padding_bottom_1": "75",
+        "section_padding_top_md_1": "0",
+        "section_padding_bottom_md_1": "0",
+        "section_padding_top_xs_1": "75",
+        "section_padding_bottom_xs_1": "75",
+        "banner_img": "shopify:\/\/shop_images\/banner-4.jpg",
+        "text_style": "text_style_center",
+        "banner_subtitle": "New Year Offer",
+        "banner_title": "Fresh flowers for any special occasion",
+        "banner_button": "Discover now",
+        "banner_button_url": "",
+        "subtitle_color": "#ffffff",
+        "title_color": "#ffffff",
+        "button_text_color": "#ffffff",
+        "button_bg_color": "rgba(0,0,0,0)",
+        "button_border_color": "#ffffff",
+        "button_text_hover_color": "#242424",
+        "button_bg_hover_color": "#ffffff",
+        "button_border_hover_color": "#ffffff"
       }
     }
   },
@@ -420,6 +461,7 @@
     "165316547492cdd7dd",
     "1653170024dcb186cb",
     "1653176096e068bc5c",
-    "165334352020b8082d"
+    "165334352020b8082d",
+    "165334734135aebdfd"
   ]
 }
