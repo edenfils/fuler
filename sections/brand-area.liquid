@@ -1,0 +1,476 @@
+{% if section.settings.brand_area_enable %}
+<div class="brand-logo-area" id="section-{{ section.id }}" data-section="BrandLogo">
+    <div class="container">
+
+        {%- capture data_carousel_options -%}
+  data-owl-carousel='{
+    {%- if section.settings.autoplay_true -%}
+    "autoplay": true,
+    "autoplayTimeout": {{ section.settings.autoplay_speed }},
+  	{%- endif -%}
+    {%- if settings.rtl_enable -%}
+    "rtl": true,
+    {%- endif -%}
+   "loop": true,
+    "margin": 80,
+    "items": {{ section.settings.brand_column }},
+     "responsiveClass": true,
+    "responsive":{
+      "0":{ "items": {{ section.settings.brand_column_sm }} },
+      "600":{ "items": {{ section.settings.brand_column_md }} },
+      "992":{ "items": {{ section.settings.brand_column_md }} },
+      "1024":{ "items": {{ section.settings.brand_column }} },
+      "1200":{ "items": {{ section.settings.brand_column }} },
+      "1400":{ "items": {{ section.settings.brand_column }} },
+      "1920":{ "items": {{ section.settings.brand_column }} }
+	}
+      
+  }'
+  {%- endcapture -%}
+
+  
+        <div class="brand-logo-active owl-carousel {% if section.settings.border_top_enable %}border-top-3{% endif %} {% if section.settings.border_bottom_enable %}border-bottom-2{% endif %}" {{ data_carousel_options }}>
+
+            {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'brand' %}
+                <div class="single-brand-logo">
+                    <img alt="{{ block.settings.brand_image.alt }}" src="{% if block.settings.brand_image %}{{ block.settings.brand_image | image_url }}{% else %}http:\/\/via.placeholder.com\/170x110{% endif %}">
+                </div>
+                    
+            {% endcase %}
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+
+{%- render 'section-style' -%}
+
+<style>
+ 
+  
+    
+  #section-{{ section.id }} .border-bottom-2 {
+    border-bottom: 1px solid {{ section.settings.border_bottom_color }};
+}
+
+#section-{{ section.id }} .border-top-3 {
+    border-top: 1px solid {{ section.settings.border_top_color }};
+}
+  
+  
+      #section-{{ section.id }} .brand-logo-active {
+    padding-top:{{ section.settings.section_padding_top_1 }}px;
+  }
+
+  #section-{{ section.id }} .brand-logo-active {
+    padding-bottom:{{ section.settings.section_padding_bottom_1 }}px;
+  }
+
+
+  @media (min-width: 768px) and (max-width: 991px){
+
+   #section-{{ section.id }}  .brand-logo-active {
+      padding-top:{{ section.settings.section_padding_top_md_1 }}px;
+    }
+
+    #section-{{ section.id }} .brand-logo-active {
+      padding-bottom:{{ section.settings.section_padding_bottom_md_1 }}px;
+    }
+
+  }
+  @media (max-width: 767px) {
+
+    #section-{{ section.id }} .brand-logo-active {
+      padding-top:{{ section.settings.section_padding_top_xs_1 }}px;
+    }
+
+    #section-{{ section.id }} .brand-logo-active {
+      padding-bottom:{{ section.settings.section_padding_bottom_xs_1 }}px;
+    }
+  }
+  
+  
+  
+</style> 
+
+
+   
+{% schema %}
+  {
+    "name": "Brand Area",
+    "settings": [
+        {
+          "type": "header",
+          "content": "Section Inner Padding"
+        },
+		{
+          "type": "header",
+          "content": "Large/Desktop Device"
+		},
+        {
+          "type": "text",
+          "id": "section_padding_top_1",
+          "label": "Section Padding Top",
+          "default": "65" ,
+          "info": "Defined in pixels. Do not add the 'px' unit."
+        },
+        {
+          "type": "text",
+          "id": "section_padding_bottom_1",
+          "label": "Section Padding Bottom",
+          "default": "65" ,
+          "info": "Defined in pixels. Do not add the 'px' unit."
+        },
+        {
+          "type": "header",
+          "content": "Tablet Device"
+        },
+        {
+          "type": "text",
+          "id": "section_padding_top_md_1",
+          "label": "Section Padding Top",
+          "default": "65" ,
+          "info": "Defined in pixels. Do not add the 'px' unit."
+        },
+        {
+          "type": "text",
+          "id": "section_padding_bottom_md_1",
+          "label": "Section Padding Bottom",
+          "default": "65" ,
+          "info": "Defined in pixels. Do not add the 'px' unit."
+        },
+        {
+          "type": "header",
+          "content": "Mobile Device"
+        },
+        {
+          "type": "text",
+          "id": "section_padding_top_xs_1",
+          "label": "Section Padding Top",
+          "default": "65" ,
+          "info": "Defined in pixels. Do not add the 'px' unit."
+        },
+        {
+          "type": "text",
+          "id": "section_padding_bottom_xs_1",
+          "label": "Section Padding Bottom",
+          "default": "65" ,
+          "info": "Defined in pixels. Do not add the 'px' unit."
+        },
+        {
+          "type": "checkbox",
+          "id": "brand_area_enable",
+          "label": "Brand Area Enable",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "border_top_enable",
+          "label": "Border Top Enable",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "border_bottom_enable",
+          "label": "Border Bottom Enable",
+          "default": true
+        },
+		{
+			"type": "header",
+            "content": "Options"
+        },
+		{
+          "type": "checkbox",
+          "id": "autoplay_true",
+          "label": "Autoplay Enable",
+          "default": false
+      	},
+		{
+            "type": "range",
+            "id": "autoplay_speed",
+            "min": 1000,
+            "max": 9000,
+            "step": 1000,
+            "label": "Autoplay Speed",
+            "unit": "ms",
+            "default": 8000
+        },
+		{
+			"type": "header",
+            "content": "Brand Carousel Column"
+        },
+		{
+            "type": "range",
+            "id": "brand_column",
+            "min": 1,
+            "max": 12,
+            "step": 1,
+            "label": "Desktop",
+            "default": 5
+        },
+		{
+            "type": "range",
+            "id": "brand_column_md",
+            "min": 1,
+            "max": 12,
+            "step": 1,
+            "label": "Tablet",
+            "default": 4
+        },
+		{
+            "type": "range",
+            "id": "brand_column_sm",
+            "min": 1,
+            "max": 12,
+            "step": 1,
+            "label": "Mobile",
+            "default": 1
+        },
+		{
+          "type": "header",
+          "content": "Color"
+        }, 
+        {
+           "type": "color",
+           "id": "border_top_color",
+           "label": "Border Top Color",
+           "default": "#eeeeee"
+        }, 
+        {
+           "type": "color",
+           "id": "border_bottom_color",
+           "label": "Border Bottom Color",
+           "default": "#eeeeee"
+        }
+	 ],		
+	"blocks":[
+      {
+         "type": "brand",
+         "name": "Brand",
+         "settings": [
+			{
+				"type": "image_picker",
+				"id": "brand_image",
+				"label": "Brand Image",
+				"info": "Recommended Size: 170 x 110px"
+		    },
+			{
+				"type": "url",
+				"id": "brand_image_url",
+				"label": "URL"
+		    }
+        ]
+       },
+		{
+          "type": "section_padding",
+          "name": "Section Padding",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 100
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 80
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 60
+			}
+          ]
+       },
+	   {
+          "type": "section_margin",
+          "name": "Section Margin",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			}
+          ]
+       },
+	   {
+          "type": "section_background",
+          "name": "Section Background",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "image_picker",
+			  "id": "section_bg_image",
+			  "label": "BG Image"
+			},
+			{
+			  "type": "color",
+			  "id": "section_bg_color",
+			  "label": "BG Color",
+			  "default": "#ffffff"
+			}
+          ]
+       }
+    ],
+    "presets":[
+        {
+            "name": "Brand",
+            "category": "5. brand",
+		  "blocks":[
+				{
+					"type": "brand"
+				},
+				{
+					"type": "brand"
+				},
+				{
+					"type": "brand"
+				},
+				{
+					"type": "brand"
+				},
+				{
+					"type": "brand"
+				}
+			]
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

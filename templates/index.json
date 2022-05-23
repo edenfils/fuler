@@ -453,6 +453,83 @@
         "button_bg_hover_color": "#ffffff",
         "button_border_hover_color": "#ffffff"
       }
+    },
+    "1653349834fb516040": {
+      "type": "brand-area",
+      "blocks": {
+        "1653349834daddf856-0": {
+          "type": "brand",
+          "settings": {
+            "brand_image": "shopify:\/\/shop_images\/logo-4.png",
+            "brand_image_url": ""
+          }
+        },
+        "1653349834daddf856-1": {
+          "type": "brand",
+          "settings": {
+            "brand_image": "shopify:\/\/shop_images\/logo-1.png",
+            "brand_image_url": ""
+          }
+        },
+        "1653349834daddf856-2": {
+          "type": "brand",
+          "settings": {
+            "brand_image": "shopify:\/\/shop_images\/logo-2.png",
+            "brand_image_url": ""
+          }
+        },
+        "1653349834daddf856-3": {
+          "type": "brand",
+          "settings": {
+            "brand_image": "shopify:\/\/shop_images\/logo-3.png",
+            "brand_image_url": ""
+          }
+        },
+        "1653349834daddf856-4": {
+          "type": "brand",
+          "settings": {
+            "brand_image": "shopify:\/\/shop_images\/logo-5.png",
+            "brand_image_url": ""
+          }
+        },
+        "76906e3f-2c31-4ffe-bb80-c4d6d477cdf8": {
+          "type": "section_padding",
+          "settings": {
+            "section_padding_top": 0,
+            "section_padding_bottom": 75,
+            "section_padding_top_md": 0,
+            "section_padding_bottom_md": 75,
+            "section_padding_top_xs": 0,
+            "section_padding_bottom_xs": 75
+          }
+        }
+      },
+      "block_order": [
+        "1653349834daddf856-0",
+        "1653349834daddf856-1",
+        "1653349834daddf856-2",
+        "1653349834daddf856-3",
+        "1653349834daddf856-4",
+        "76906e3f-2c31-4ffe-bb80-c4d6d477cdf8"
+      ],
+      "settings": {
+        "section_padding_top_1": "65",
+        "section_padding_bottom_1": "65",
+        "section_padding_top_md_1": "65",
+        "section_padding_bottom_md_1": "65",
+        "section_padding_top_xs_1": "65",
+        "section_padding_bottom_xs_1": "65",
+        "brand_area_enable": true,
+        "border_top_enable": true,
+        "border_bottom_enable": true,
+        "autoplay_true": false,
+        "autoplay_speed": 8000,
+        "brand_column": 5,
+        "brand_column_md": 4,
+        "brand_column_sm": 1,
+        "border_top_color": "#eeeeee",
+        "border_bottom_color": "#eeeeee"
+      }
     }
   },
   "order": [
@@ -462,6 +539,7 @@
     "1653170024dcb186cb",
     "1653176096e068bc5c",
     "165334352020b8082d",
-    "165334734135aebdfd"
+    "165334734135aebdfd",
+    "1653349834fb516040"
   ]
 }
