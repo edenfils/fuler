@@ -270,12 +270,156 @@
         "dot_color": "#ffffff",
         "dot_active_color": "#ffffff"
       }
+    },
+    "1653176096e068bc5c": {
+      "type": "bestselling-product",
+      "blocks": {
+        "1653176096cbd79885-0": {
+          "type": "banner",
+          "settings": {
+            "sidebar_handle": "left_banner_handle",
+            "banner_img": "shopify:\/\/shop_images\/deal-1_83e00da1-6b0a-4671-a127-32221652faaa.png",
+            "text_style": "text_style_center",
+            "banner_hilight_img": "shopify:\/\/shop_images\/deals-2.png",
+            "banner_hilight_img_enable": true,
+            "banner_title": "Hot Deal ! Sale Up To <span>20% Off<\/span>",
+            "banner_description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+            "date_number": "2018\/09\/01",
+            "banner_button": "Shop Now",
+            "banner_button_url": "",
+            "title_color": "#242424",
+            "highloght_title_color": "#ff3d2a",
+            "description_color": "#242424",
+            "coundown_number_color": "#242424",
+            "coundown_border_color": "#ebebeb",
+            "coundown_text_color": "#242424",
+            "button_text_color": "#ffffff",
+            "button_bg_color": "#ff3d2a",
+            "button_text_hover_color": "#ffffff",
+            "button_bg_hover_color": "#242424"
+          }
+        },
+        "1653176096cbd79885-1": {
+          "type": "banner",
+          "settings": {
+            "sidebar_handle": "left_banner_handle",
+            "banner_img": "shopify:\/\/shop_images\/deal-1_a0282f2b-bc84-4ca9-bc46-5ae70afee11b.png",
+            "text_style": "text_style_center",
+            "banner_hilight_img": "shopify:\/\/shop_images\/deals-2.png",
+            "banner_hilight_img_enable": true,
+            "banner_title": "Hot Deal ! Sale Up To <span>20% Off<\/span>",
+            "banner_description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+            "date_number": "2018\/09\/01",
+            "banner_button": "Shop Now",
+            "banner_button_url": "",
+            "title_color": "#242424",
+            "highloght_title_color": "#ff3d2a",
+            "description_color": "#242424",
+            "coundown_number_color": "#242424",
+            "coundown_border_color": "#ebebeb",
+            "coundown_text_color": "#242424",
+            "button_text_color": "#ffffff",
+            "button_bg_color": "#ff3d2a",
+            "button_text_hover_color": "#ffffff",
+            "button_bg_hover_color": "#242424"
+          }
+        },
+        "1653176096cbd79885-2": {
+          "type": "section_padding",
+          "settings": {
+            "section_padding_top": 0,
+            "section_padding_bottom": 100,
+            "section_padding_top_md": 0,
+            "section_padding_bottom_md": 80,
+            "section_padding_top_xs": 0,
+            "section_padding_bottom_xs": 60
+          }
+        },
+        "1653176096cbd79885-3": {
+          "type": "section_background",
+          "settings": {
+            "section_bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "1653176096cbd79885-0",
+        "1653176096cbd79885-1",
+        "1653176096cbd79885-2",
+        "1653176096cbd79885-3"
+      ],
+      "settings": {
+        "section_padding_top_1": "75",
+        "section_padding_bottom_1": "70",
+        "section_padding_top_md_1": "0",
+        "section_padding_bottom_md_1": "0",
+        "section_padding_top_xs_1": "0",
+        "section_padding_bottom_xs_1": "0",
+        "border_top_enable": false,
+        "border_bottom_enable": false,
+        "section_title_enable": true,
+        "section_title_2": "Best Selling Products",
+        "section_border_enable": true,
+        "autoplay_true": false,
+        "autoplay_speed": 8000,
+        "product_column": 1,
+        "product_column_md": 1,
+        "product_column_sm": 1,
+        "border_top_color": "#eeeeee",
+        "border_bottom_color": "#eeeeee",
+        "section_title_color": "#242424",
+        "section_title_bg_color": "#f8f9f9",
+        "section_border_color": "#eeeeee",
+        "arrow_text_color": "#242424",
+        "arrow_bg_color": "#efefef",
+        "arrow_text_hover_color": "#ffffff",
+        "arrow_bg_hover_color": "#ff3d2a"
+      }
+    },
+    "165334352020b8082d": {
+      "type": "featured-product",
+      "blocks": {
+        "1653343520bc65d7ba-0": {
+          "type": "section_padding",
+          "settings": {
+            "section_padding_top": 0,
+            "section_padding_bottom": 100,
+            "section_padding_top_md": 0,
+            "section_padding_bottom_md": 80,
+            "section_padding_top_xs": 0,
+            "section_padding_bottom_xs": 60
+          }
+        }
+      },
+      "block_order": [
+        "1653343520bc65d7ba-0"
+      ],
+      "settings": {
+        "section_title_enable": true,
+        "section_title": "Hot Flower",
+        "section_border_enable": true,
+        "collection": "men",
+        "featured_product_limit_handle": 8,
+        "autoplay_true": false,
+        "autoplay_speed": 8000,
+        "product_column": 4,
+        "product_column_md": 3,
+        "product_column_sm": 1,
+        "section_title_color": "#242424",
+        "section_border_color": "#eeeeee",
+        "arrow_text_color": "#242424",
+        "arrow_bg_color": "#efefef",
+        "arrow_text_hover_color": "#fff",
+        "arrow_bg_hover_color": "#ff3d2a"
+      }
     }
   },
   "order": [
     "1653001541b34a7c69",
     "16530074273ac5893a",
     "165316547492cdd7dd",
-    "1653170024dcb186cb"
+    "1653170024dcb186cb",
+    "1653176096e068bc5c",
+    "165334352020b8082d"
   ]
 }

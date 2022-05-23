@@ -97,24 +97,6 @@
     "predictive_search_show_price": false,
     "currency_code_enabled": true,
     "sections": {
-      "announcement-bar": {
-        "type": "announcement-bar",
-        "blocks": {
-          "announcement-bar-0": {
-            "type": "announcement",
-            "settings": {
-              "text": "Welcome to our store",
-              "color_scheme": "background-1",
-              "link": ""
-            }
-          }
-        },
-        "block_order": [
-          "announcement-bar-0"
-        ],
-        "settings": {
-        }
-      },
       "header": {
         "type": "header",
         "settings": {
@@ -162,19 +144,6 @@
           "mobile_menu_bg_hover_color": "#f8f8f8",
           "mobile_sub_menu_bg_hover_color": "#f8f8f8",
           "mobile_mega_menu_bg_hover_color": "#f8f8f8"
-        }
-      },
-      "main-password-header": {
-        "type": "main-password-header",
-        "settings": {
-          "logo_max_width": 100,
-          "color_scheme": "background-1"
-        }
-      },
-      "main-password-footer": {
-        "type": "main-password-footer",
-        "settings": {
-          "color_scheme": "background-1"
         }
       },
       "footer": {
@@ -371,41 +340,10 @@
       "predictive_search_show_price": false,
       "currency_code_enabled": true,
       "sections": {
-        "announcement-bar": {
-          "type": "announcement-bar",
-          "blocks": {
-            "announcement-bar-0": {
-              "type": "announcement",
-              "settings": {
-                "text": "Welcome to our store",
-                "color_scheme": "background-1",
-                "link": ""
-              }
-            }
-          },
-          "block_order": [
-            "announcement-bar-0"
-          ],
-          "settings": {
-          }
-        },
         "header": {
           "type": "header",
           "settings": {
             "logo_width": 90
-          }
-        },
-        "main-password-header": {
-          "type": "main-password-header",
-          "settings": {
-            "logo_max_width": 100,
-            "color_scheme": "background-1"
-          }
-        },
-        "main-password-footer": {
-          "type": "main-password-footer",
-          "settings": {
-            "color_scheme": "background-1"
           }
         }
       }
