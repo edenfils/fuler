@@ -1,0 +1,305 @@
+{%- assign on_sale = false -%}
+{%- if product.compare_at_price > product.price -%}
+{%- assign on_sale = true -%}
+{%- endif -%}
+
+
+{%- assign sold_out = true -%}
+{%- if product.available -%}
+{%- assign sold_out = false -%}
+{%- endif -%}
+
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<div class="product-details" id="section-{{section.id }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="product-details-img" id="ProductPhoto">
+                    {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+                    <img id="ProductPhotoImg" {% if section.settings.product_zoom_enable %}class="product-zoom" {% endif
+                        %} data-image-id="{{ featured_image.id }}"
+                        data-zoom-image="{{ featured_image | image_url: width: 1024, height: 1024 }}"
+                        src="{{ featured_image | image_url: width: 1024, height: 1024 }}"
+                        alt="{{ featured_image.alt | escape }}" />
+
+                    {% if product.images.size > 1 %}
+                    <div id="ProductThumbs" class="mt-20 product-dec-slider owl-carousel">
+                        {% for image in product.images %}
+                        <a class="product-single__thumbnail {% if forloop.first and section.settings.product_zoom_enable %}active{% endif %}"
+                            href="{{ image.src | image_url: width: 1024, height: 1024 }}"
+                            data-image="{{ image.src | image_url: width: 1024, height: 1024 }}"
+                            data-zoom-image="{{ image.src | image_url: width: 1024, height: 1024 }}"
+                            data-image-id="{{ image.id }}">
+
+                            <img src="{{ image.src | image_url: width: 160, height: 160 }}"
+                                alt="{{ image.alt | escape }}">
+                        </a>
+                        {% endfor %}
+
+                    </div>
+                    {% endif %}
+
+                    {% if on_sale and section.settings.discount_percent_enable %}
+                    <span>-{{ product.price | times: 100 | divided_by: product.compare_at_price | minus: 100 | abs
+                        }}%</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+
+                {% form 'product', product, id: "AddToCartForm" %}
+                <div class="product-details-content">
+                    {%- for block in section.blocks -%}
+                    {%- case block.type -%}
+                    {%- when 'title' -%}
+                    <h4>{{ product.title }}</h4>
+
+                    {%- when 'sku' -%}
+                    {%- if current_variant.sku.size > 0 -%}
+                    <div class="product-sku">{{ block.settings.product_sku_title }} <span class="variant-sku">{{
+                            current_variant.sku }}</span></div>
+                    {%- endif -%}
+
+                    {%- when 'review' -%}
+                    <div class="rating-review">
+                        <div class="pro-dec-rating">
+                            {%- if block.settings.review_handle == 'shopify_review' -%}
+                            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                            {%- elsif block.settings.review_handle == 'ali_review' -%}
+                            <div product-id="{{ product.id }}" class="alr-display-review-badge"></div>
+                            {%- endif -%}
+                        </div>
+                    </div>
+
+
+                    {%- when 'price' -%}
+                    <span id="ProductPrice">{{ product.selected_or_first_available_variant.price | money }}</span>
+                    {% if product.compare_at_price_max > product.price %}
+                    <span class="product-price-old" id="ComparePrice">{{
+                        product.selected_or_first_available_variant.compare_at_price | money }}</span>
+                    {% endif %}
+
+
+                    {%- when 'inventory' -%}
+                    {%- unless product.tags contains 'comingsoon' -%}
+                    <script>
+                        var inv_qty = {};
+                        {% for var in product.variants %}
+                        inv_qty[{{- var.id -}}] = { { var.inventory_quantity | default: 0 } };
+                        {% endfor %}
+                    </script>
+                    {% if current_variant.inventory_management == "shopify" %}
+                    <div class="product-variant-inventory">
+                        <span class="inventory-title">{{ block.settings.availability_title }}</span> <span
+                            class="variant-inventory">{{ current_variant.inventory_quantity }} {{
+                            block.settings.left_in_stock_title }}</span>
+                    </div>
+                    {% endif %}
+                    {%- endunless -%}
+
+                    {%- when 'description' -%}
+                    {%- unless block.settings.product_description_handle == 'without_description' -%}
+                    {%- if block.settings.product_description_handle == 'full_description' -%}
+                    {{ product.description | split: '[short_description]' | first | split: '[product_description]' |
+                    first | split: '[new_products]' | first | split: '[product_video]' | first | split:
+                    '[affiliate_link]' | first | split: '[countdown]' | first | split: '[unique_description_1]' | first
+                    | split: '[unique_description_2]' | first | split: '[unique_description_3]' | first }}
+                    {%- elsif block.settings.product_description_handle == 'short_description' -%}
+                    <div class="pro-dec-feature">
+                        {%- if product.description contains '[short_description]' -%}
+                        {%- assign short_description_first = product.description | split:'[/short_description]' | first
+                        -%}
+                        {%- assign short_description_final = short_description_first | split:'[short_description]' |
+                        last -%}
+                        {{ short_description_final }}
+                        {%- else -%}
+                        {%- assign truncatewords_count = block.settings.truncatewords_count_handle -%}
+                        <p>{{ product.description | strip_html | truncatewords: truncatewords_count | split:
+                            '[short_description]' | first | split: '[product_description]' | first | split:
+                            '[new_products]' | first | split: '[product_video]' | first | split: '[affiliate_link]' |
+                            first | split: '[countdown]' | first | split: '[unique_description_1]' | first | split:
+                            '[unique_description_2]' | first | split: '[unique_description_3]' | first }}</p>
+                        {%- endif -%}
+                    </div>
+                    {%- endif -%}
+                    {%- endunless -%}
+
+
+                    {%- when 'countdown' -%}
+                    {%- if product.description contains '[countdown]' -%}
+                    {%- assign count_down_first = product.description | split:'[/countdown]' | first -%}
+                    {%- assign count_down_final = count_down_first | split:'[countdown]' | last -%}
+                    <div class="product_coundown product_timing">
+                        <h5>{{ block.settings.countdown_heading }}</h5>
+                        <div data-countdown="{{ count_down_final }}"></div>
+                    </div>
+                    {%- endif -%}
+
+
+                    {%- when 'variants' -%}
+          <div class="quality-add-to-cart">
+            <div class="swatch-color">
+              <div class="product-variant-option"> 
+                <select name="id" id="productSelect" class="product-single__variants" style="display:none;">
+                  {% for variant in product.variants %}
+                  {% if variant.available %}
+                  <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+                  {% else %}
+                  <option disabled="disabled">
+                    {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                  </option>
+                  {% endif %}
+                  {% endfor %}
+                </select>     
+
+                {%- if block.settings.product_variant_handle == 'product_variant_swatch_option' -%}
+                {%- if product.available and product.variants.size > 1 -%}
+                {% for option in product.options %}
+                {%- render 'swatch' with option -%}
+                {% endfor %}
+                {%- endif -%}                    
+                <script>
+                  jQuery(function() {
+                    jQuery('.swatch :radio').change(function() {
+                      var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
+                      var optionValue = jQuery(this).val();
+                      jQuery(this)
+                      .closest('form')
+                      .find('.single-option-selector')
+                      .eq(optionIndex)
+                      .val(optionValue)
+                      .trigger('change');
+                    });
+                  });
+                </script>
+                {%- endif -%}
+              </div>
+            </div>
+
+
+            {%- when 'action_buttons' -%}
+            {% if product.description contains '[affiliate_link]' %}
+            {% assign affiliate_link_first = product.description | split:'[/affiliate_link]' | first %}
+            {% assign affiliate_link_final = affiliate_link_first | split:'[affiliate_link]' | last %}
+            <div class="shop-list-cart-wishlist">
+              <a title="Add To Cart" href="{{ affiliate_link_final }}">
+                <i class="icon-handbag"></i>
+              </a>
+              {% render 'wishlist-button' with product as product %}
+              {%- if settings.compare_product_enalbe -%}
+              <a href="#" class="action-btn compare action-compare" data-pid="{{ product.handle  }}" data-original-title="Compare">
+                <i class="icon-shuffle"></i>
+              </a>
+              {%- endif -%}
+            </div>
+            {% elsif product.available %}
+            <div class="quality product-quantity-action quantity-selector">
+              <label>{{ block.settings.quentity_title }}</label>
+              <div class=" cart-plus-minus product-quantity-action quantity-selector">
+                <input type="text" value="1" name="quantity" class="cart-plus-minus-box">
+              </div>
+            </div>
+            <div class="shop-list-cart-wishlist">
+              <a id="AddToCart" href="javascript:void(0);" class="action-btn cart cart-item action-cart addtocart" onclick="{{ func }}; return false;" title="{{ 'products.product.add_to_cart' | t }}">
+                <i class="icon-handbag"></i>
+                <i class="icon-settings fa-spin"></i>
+                <i class="fa fa-check"></i>
+                <i class="fa fa-times"></i>
+              </a>
+              <script>
+                jQuery('#AddToCart').click(function(e) {
+                  e.preventDefault();
+                  Shopify.addItemFromFormStart('AddToCartForm', {{ product.id }});
+                                               });
+              </script>
+              {% render 'wishlist-button' with product as product %}
+              {%- if settings.compare_product_enalbe -%}
+              <a href="#" class="action-btn compare action-compare" data-pid="{{ product.handle  }}" data-original-title="Compare">
+                <i class="icon-shuffle"></i>
+              </a>
+              {%- endif -%}
+            </div>
+            {% else %}
+            <div class="shop-list-cart-wishlist">
+              <a id="AddToCart" href="javascript:void(0);" class="action-btn disabled-add-to-cart action-cart" onclick="{{ func }}; return false;" title="{{ 'products.product.add_to_cart' | t }}">
+                <i class="icon-handbag"></i>
+              </a>
+              {% render 'wishlist-button' with product as product %}
+              {%- if settings.compare_product_enalbe -%}
+              <a href="#" class="action-btn compare action-compare" data-pid="{{ product.handle  }}" data-original-title="Compare">
+                <i class="icon-shuffle"></i>
+              </a>
+              {%- endif -%}
+            </div>
+            {% endif %}
+          </div>
+          <div class="Payment_button">
+            {%- if product.available and block.settings.dynamic_checkout_button_enable -%}
+            {{ form | payment_button }}
+            {%- endif -%}
+          </div>
+
+
+          {%- when 'categories_and_tag' -%}
+          {% if block.settings.categories_enable %}
+          <div class="pro-dec-categories">
+            <ul>
+              <li class="categories-title">{{ block.settings.categories_title }}</li>
+              {% assign categories_list_limit = block.settings.categories_list_limit_handle %}
+              {% for category in collections limit: categories_list_limit %}
+              <li><a href="{{ category.url }}">{{ category.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+          {% if block.settings.tag_enable and product.tags.size > 0 %}
+          <div class="pro-dec-categories">
+            <ul>
+              <li class="categories-title">{{ block.settings.tag_title }}</li>
+              {% assign tags_list_limit = block.settings.tags_list_limit_hanlde %}
+              {% for tag in product.tags limit: tags_list_limit %}
+              <li><a href="/collections/all/{{ tag | handle }}">{{ tag }}{% unless forloop.last %},{% endunless %}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+
+          {%- when 'share_and_payment' -%}
+          {% if block.settings.social_share_enable %}
+          <div class="pro-dec-social">
+             {% render 'social-icon-share-5', share_title: product.title, share_permalink: product.url, share_image: product, block: block %}
+          </div>
+          {% endif %}
+          {%- if block.settings.payment_option_enable -%}
+          <div class="custom-payment-options">
+            {%- if block.settings.payment_information != '' -%}
+            <div>
+              {{ block.settings.payment_information }}
+            </div>
+            {%- endif -%}
+            {%- if block.settings.payment_image -%}
+            <img src="{{ block.settings.payment_image | image_url: width: 1024, height: 1024 }}" alt="{{ block.settings.payment_image.alt }}">
+            {%- endif -%}
+            {%- render 'payment-icon', block: block -%}
+          </div>
+          {%- endif -%}
+                    {%- endcase -%}
+                    
+                    {%- endfor -%}
+
+                    {%- for block in section.blocks -%}
+                    {%- case block.type -%}
+                    {%- when '@app' -%}
+                    {%- render block -%}
+                    {%- endcase -%}
+                    {%- endfor -%}
+                </div>
+                {%- endform -%}
+            </div>
+        </div>
+    </div>
+</div>
